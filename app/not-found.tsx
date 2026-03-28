@@ -1,7 +1,8 @@
+"use client"
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-'use client';
 
 
 export default function NotFound() {
