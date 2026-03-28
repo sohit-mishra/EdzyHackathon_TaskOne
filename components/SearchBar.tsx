@@ -13,10 +13,12 @@ export default function SearchBar({ setQuery }: any) {
   }, [debounced]);
 
   return (
-    <Input
-      placeholder="Search books..."
-      value={text}
-      onChange={(e) => setText(e.target.value)}
-    />
+    <div className="mx-auto my-10 w-full max-w-md">
+      <Input
+        placeholder="Search books..."
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+    </div>
   );
 }
