@@ -24,7 +24,7 @@ export default function BookGrid({
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-10">
         {data?.pages.map((page: any) =>
           page.books.map((book: any, i: number) => (
             <BookCard key={i} book={book} />
