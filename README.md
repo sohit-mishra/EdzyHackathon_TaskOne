@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 Infinite Open Library Explorer
 
-## Getting Started
+A high-performance, infinite-scrolling book explorer built using
+**Next.js (App Router)**, **TanStack Query**, **React Virtual**, and
+**shadcn/ui**.
 
-First, run the development server:
+------------------------------------------------------------------------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+
+-   🔍 Search books using Open Library API
+-   ♾️ Infinite scrolling with pagination
+-   ⚡ Virtualized rendering for 1000+ items
+-   🎨 Responsive UI (Mobile, Tablet, Desktop)
+-   🌙 Dark/Light mode support
+-   🧠 Debounced search (400ms)
+-   🧩 Clean architecture with reusable components
+
+------------------------------------------------------------------------
+
+## 🛠️ Tech Stack
+
+-   Next.js (App Router + TypeScript)
+-   TanStack Query (React Query)
+-   React Virtual
+-   Tailwind CSS
+-   shadcn/ui
+-   Axios
+
+------------------------------------------------------------------------
+
+## 📂 Folder Structure
+
+```
+project/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── not-found.tsx
+│   ├── page.tsx
+│   └── library/
+│       └── page.tsx
+├── components/
+│   ├── BookCard.tsx
+│   ├── BookGrid.tsx
+│   ├── Loader.tsx
+│   ├── SearchBar.tsx
+│   └── ui/
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── input.tsx
+│       └── skeleton.tsx
+├── hooks/
+│   └── useInfiniteBooks.ts
+├── lib/
+│   ├── openLibrary.ts
+│   └── utils.ts
+├── providers/
+│   └── ReactQueryProvider.tsx
+├── public/
+├── components.json
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── postcss.config.mjs
+├── README.md
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+------------------------------------------------------------------------
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/sohit-mishra/EdzyHackathon_TaskOne.git
+cd EdzyHackathon_TaskOne
+npm install
+npm run dev
+```
 
-## Learn More
+------------------------------------------------------------------------
 
-To learn more about Next.js, take a look at the following resources:
+## ▶️ Run Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+``` bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open in browser:
 
-## Deploy on Vercel
+    http://localhost:3000/library
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+------------------------------------------------------------------------
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 API Used
+
+-   Open Library Search API\
+    https://openlibrary.org/search.json?q=<query>&page=<n>
+
+------------------------------------------------------------------------
+
+## ⚡ Performance Strategy
+
+-   Infinite scroll using Intersection Observer
+-   Virtualization using React Virtual
+-   Cached API calls via React Query
+-   Fixed image aspect ratio to avoid layout shifts
+
+------------------------------------------------------------------------
+
+## 🎯 Bonus Features
+
+-   Sort by year (asc/desc)
+-   Back to top button
+-   URL query persistence (?q=search)
+-   Prefetch next page
+-   Placeholder image fallback
+
+------------------------------------------------------------------------
+
+## 📌 Notes
+
+-   Default search query: `science`
+-   20 items fetched per page
+-   Fully responsive layout using Tailwind grid
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Author
+
+Sohit Mishra
+
+------------------------------------------------------------------------
+
+## 📄 License
+
+This project is for educational and hackathon purposes.
