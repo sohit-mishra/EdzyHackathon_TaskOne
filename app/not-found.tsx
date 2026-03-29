@@ -37,7 +37,7 @@ export default function NotFound() {
                     transition={{ delay: 0.4, duration: 0.6 }}
                     className="text-slate-400 mb-12"
                 >
-                    Sorry, the page you're looking for doesn't exist.
+                    Sorry, the page you&apos;re looking for doesn&apos;t exist.
                 </motion.p>
 
                 <motion.div

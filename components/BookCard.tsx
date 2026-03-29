@@ -3,11 +3,19 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
-export default function BookCard({ book }: any) {
+type Book = {
+  title: string;
+  cover_i?: number;
+  author_name?: string[];
+  subject?: string[];
+};
+
+export default function BookCard({ book }: { book: Book }) {
   const cover = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
-    : "/placeholder.png";
+    : "/defaultbook.png";
 
   return (
     <motion.div
@@ -17,11 +25,14 @@ export default function BookCard({ book }: any) {
       animate={{ opacity: 1, y: 0 }}
     >
       <Card className="p-2">
-        <img
-          src={cover}
-          alt={book.title}
-          className="w-full h-[250px] object-cover rounded"
-        />
+        <div className="relative w-full h-[250px]">
+          <Image
+            src={cover}
+            alt={book.title}
+            fill
+            className="object-cover rounded"
+          />
+        </div>
 
         <h2 className="font-bold mt-2 line-clamp-2">
           {book.title}
@@ -32,7 +43,7 @@ export default function BookCard({ book }: any) {
         </p>
 
         <div className="flex flex-wrap gap-1 mt-2">
-          {book.subject?.slice(0, 3).map((s: string) => (
+          {book.subject?.slice(0, 3).map((s) => (
             <Badge key={s}>{s}</Badge>
           ))}
         </div>

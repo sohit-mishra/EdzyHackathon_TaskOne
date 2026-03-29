@@ -3,12 +3,31 @@
 import { useRef, useEffect } from "react";
 import BookCard from "./BookCard";
 
+type Book = {
+  title: string;
+  cover_i?: number;
+  author_name?: string[];
+  subject?: string[];
+};
+
+type Page = {
+  books: Book[];
+};
+
+type Props = {
+  data: {
+    pages: Page[];
+  };
+  fetchNextPage: () => void;
+  hasNextPage: boolean;
+};
+
 export default function BookGrid({
   data,
   fetchNextPage,
   hasNextPage,
-}: any) {
-  const loadMoreRef = useRef<any>(null);
+}: Props) {
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -17,17 +36,21 @@ export default function BookGrid({
       }
     });
 
-    if (loadMoreRef.current) observer.observe(loadMoreRef.current);
+    const current = loadMoreRef.current;
 
-    return () => observer.disconnect();
-  }, [hasNextPage]);
+    if (current) observer.observe(current);
+
+    return () => {
+      if (current) observer.unobserve(current);
+    };
+  }, [hasNextPage, fetchNextPage]);
 
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-10">
-        {data?.pages.map((page: any) =>
-          page.books.map((book: any, i: number) => (
-            <BookCard key={i} book={book} />
+        {data?.pages.map((page, pageIndex) =>
+          page.books.map((book, i) => (
+            <BookCard key={`${pageIndex}-${i}`} book={book} />
           ))
         )}
       </div>

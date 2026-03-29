@@ -4,13 +4,17 @@ import { Input } from "@/components/ui/input";
 import { useDebounce } from "use-debounce";
 import { useState, useEffect } from "react";
 
-export default function SearchBar({ setQuery }: any) {
+type Props = {
+  setQuery: (value: string) => void;
+};
+
+export default function SearchBar({ setQuery }: Props) {
   const [text, setText] = useState("");
   const [debounced] = useDebounce(text, 400);
 
   useEffect(() => {
     setQuery(debounced || "science");
-  }, [debounced]);
+  }, [debounced, setQuery]);
 
   return (
     <div className="mx-auto my-10 w-full max-w-md">
